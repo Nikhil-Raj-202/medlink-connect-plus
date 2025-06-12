@@ -5,6 +5,7 @@ import FeaturesSection from '@/components/FeaturesSection';
 import DoctorSection from '@/components/DoctorSection';
 import HealthLockerSection from '@/components/HealthLockerSection';
 import Footer from '@/components/Footer';
+import AmbulanceService from '@/components/AmbulanceService';
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <DoctorSection />
       <HealthLockerSection />
       <Footer />
+      <AmbulanceService />
     </div>
   );
 };

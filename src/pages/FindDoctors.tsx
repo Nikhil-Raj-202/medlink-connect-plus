@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DoctorMap from '@/components/DoctorMap';
 import { Button } from '@/components/ui/button';
 import { Search, Filter, MapPin, List } from 'lucide-react';
+import AmbulanceService from '@/components/AmbulanceService';
 
 // Sample doctor data with locations in Mumbai
 const sampleDoctors = [
@@ -225,6 +225,8 @@ const FindDoctors = () => {
           </div>
         )}
       </div>
+
+      <AmbulanceService />
 
       <Footer />
     </div>
