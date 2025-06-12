@@ -6,72 +6,82 @@ import { Button } from '@/components/ui/button';
 import { Search, Filter, MapPin, List } from 'lucide-react';
 import AmbulanceService from '@/components/AmbulanceService';
 
-// Sample doctor data with locations in Mumbai
+// Sample doctor data with locations in Mumbai - updated to match Doctor interface
 const sampleDoctors = [
   {
-    id: '1',
+    id: 1,
     name: "Dr. Priya Sharma",
     specialization: "Cardiologist",
     rating: 4.9,
+    experience: "15 years",
     location: {
       lat: 19.0760,
       lng: 72.8777,
-      address: "Bandra West, Mumbai"
     },
-    consultationFee: 800,
-    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face"
+    address: "Bandra West, Mumbai",
+    phone: "+91 98765 43210",
+    availability: "Mon-Fri 9AM-6PM",
+    consultationFee: "₹800",
   },
   {
-    id: '2',
+    id: 2,
     name: "Dr. Rajesh Kumar",
     specialization: "Pediatrician",
     rating: 4.8,
+    experience: "12 years",
     location: {
       lat: 19.0596,
       lng: 72.8295,
-      address: "Andheri East, Mumbai"
     },
-    consultationFee: 600,
-    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=face"
+    address: "Andheri East, Mumbai",
+    phone: "+91 98765 43211",
+    availability: "Mon-Sat 10AM-7PM",
+    consultationFee: "₹600",
   },
   {
-    id: '3',
+    id: 3,
     name: "Dr. Anitha Reddy",
     specialization: "Dermatologist",
     rating: 4.9,
+    experience: "10 years",
     location: {
       lat: 19.1136,
       lng: 72.8697,
-      address: "Powai, Mumbai"
     },
-    consultationFee: 700,
-    image: "https://images.unsplash.com/photo-1594824505341-ec2d83c50b38?w=400&h=400&fit=crop&crop=face"
+    address: "Powai, Mumbai",
+    phone: "+91 98765 43212",
+    availability: "Tue-Sun 11AM-8PM",
+    consultationFee: "₹700",
   },
   {
-    id: '4',
+    id: 4,
     name: "Dr. Sunil Mehta",
     specialization: "Orthopedic",
     rating: 4.7,
+    experience: "18 years",
     location: {
       lat: 18.9220,
       lng: 72.8347,
-      address: "Colaba, Mumbai"
     },
-    consultationFee: 900,
-    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=400&fit=crop&crop=face"
+    address: "Colaba, Mumbai",
+    phone: "+91 98765 43213",
+    availability: "Mon-Fri 8AM-5PM",
+    consultationFee: "₹900",
   },
   {
-    id: '5',
+    id: 5,
     name: "Dr. Kavya Nair",
     specialization: "Gynecologist",
     rating: 4.8,
+    experience: "14 years",
     location: {
       lat: 19.0330,
       lng: 72.8570,
-      address: "Worli, Mumbai"
     },
-    consultationFee: 750,
-    image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&h=400&fit=crop&crop=face"
+    address: "Worli, Mumbai",
+    phone: "+91 98765 43214",
+    availability: "Mon-Sat 9AM-6PM",
+    consultationFee: "₹750",
   }
 ];
 
@@ -199,20 +209,18 @@ const FindDoctors = () => {
             {filteredDoctors.map((doctor) => (
               <div key={doctor.id} className="bg-white rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 p-6">
                 <div className="flex items-start space-x-4">
-                  <img
-                    src={doctor.image}
-                    alt={doctor.name}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-semibold text-lg">
+                    {doctor.name.split(' ').map(n => n[0]).join('')}
+                  </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900 text-lg">{doctor.name}</h3>
                     <p className="text-primary font-medium">{doctor.specialization}</p>
                     <p className="text-sm text-gray-600 flex items-center mt-1">
                       <MapPin className="w-3 h-3 mr-1" />
-                      {doctor.location.address}
+                      {doctor.address}
                     </p>
                     <div className="flex items-center justify-between mt-3">
-                      <span className="text-lg font-bold text-gray-900">₹{doctor.consultationFee}</span>
+                      <span className="text-lg font-bold text-gray-900">{doctor.consultationFee}</span>
                       <span className="text-sm text-gray-600">Rating: {doctor.rating}/5</span>
                     </div>
                   </div>
