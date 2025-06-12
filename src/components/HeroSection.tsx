@@ -1,6 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Search, MapPin, Stethoscope, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -30,10 +31,12 @@ const HeroSection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="gradient-primary text-white px-6 sm:px-8 w-full sm:w-auto">
-                <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                Find Doctors Near You
-              </Button>
+              <Link to="/find-doctors">
+                <Button size="lg" className="gradient-primary text-white px-6 sm:px-8 w-full sm:w-auto">
+                  <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  Find Doctors Near You
+                </Button>
+              </Link>
               <Button size="lg" variant="outline" className="w-full sm:w-auto">
                 <Shield className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Connect with ABHA
@@ -84,9 +87,11 @@ const HeroSection = () => {
                   />
                 </div>
                 
-                <Button className="w-full gradient-primary text-white text-sm sm:text-base">
-                  Search Doctors
-                </Button>
+                <Link to="/find-doctors" className="block">
+                  <Button className="w-full gradient-primary text-white text-sm sm:text-base">
+                    Search Doctors
+                  </Button>
+                </Link>
               </div>
               
               <div className="pt-4 border-t border-gray-100">

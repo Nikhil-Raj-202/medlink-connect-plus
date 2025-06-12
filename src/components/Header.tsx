@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Heart, User, Bell } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,16 +12,16 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-7 h-7 sm:w-8 sm:h-8 gradient-healthcare rounded-lg flex items-center justify-center">
               <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
             <span className="text-lg sm:text-xl font-bold text-gradient">MedLink+</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6 xl:space-x-8">
-            <a href="#" className="text-sm xl:text-base text-gray-700 hover:text-primary transition-colors">Find Doctors</a>
+            <Link to="/find-doctors" className="text-sm xl:text-base text-gray-700 hover:text-primary transition-colors">Find Doctors</Link>
             <a href="#" className="text-sm xl:text-base text-gray-700 hover:text-primary transition-colors">Specializations</a>
             <a href="#" className="text-sm xl:text-base text-gray-700 hover:text-primary transition-colors">Health Locker</a>
             <a href="#" className="text-sm xl:text-base text-gray-700 hover:text-primary transition-colors">About</a>
@@ -55,7 +56,7 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200 bg-white">
             <div className="flex flex-col space-y-3">
-              <a href="#" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">Find Doctors</a>
+              <Link to="/find-doctors" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">Find Doctors</Link>
               <a href="#" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">Specializations</a>
               <a href="#" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">Health Locker</a>
               <a href="#" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">About</a>
