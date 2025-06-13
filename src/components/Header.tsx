@@ -29,13 +29,17 @@ const Header = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
-            <Button variant="outline" size="sm" className="text-xs sm:text-sm">
-              <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-              <span className="hidden sm:inline">Login with</span> ABHA
-            </Button>
-            <Button size="sm" className="gradient-primary text-white text-xs sm:text-sm">
-              <span className="hidden lg:inline">Book</span> Appointment
-            </Button>
+            <Link to="/login">
+              <Button variant="outline" size="sm" className="text-xs sm:text-sm">
+                <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                <span className="hidden sm:inline">Login</span>
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button size="sm" className="gradient-primary text-white text-xs sm:text-sm">
+                <span className="hidden lg:inline">Sign Up</span>
+              </Button>
+            </Link>
             <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 cursor-pointer hover:text-primary transition-colors" />
           </div>
 
@@ -61,13 +65,17 @@ const Header = () => {
               <a href="#" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">Health Locker</a>
               <a href="#" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">About</a>
               <div className="pt-3 border-t border-gray-200 space-y-3 px-2">
-                <Button variant="outline" size="sm" className="w-full justify-center">
-                  <User className="w-4 h-4 mr-2" />
-                  Login with ABHA
-                </Button>
-                <Button size="sm" className="w-full gradient-primary text-white justify-center">
-                  Book Appointment
-                </Button>
+                <Link to="/login">
+                  <Button variant="outline" size="sm" className="w-full justify-center">
+                    <User className="w-4 h-4 mr-2" />
+                    Login
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button size="sm" className="w-full gradient-primary text-white justify-center">
+                    Sign Up
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
