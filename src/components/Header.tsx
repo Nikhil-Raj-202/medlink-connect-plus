@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Mock authentication state - in real app this would come from auth context
+  const isLoggedIn = false; // Change to true to see dashboard link
 
   return (
     <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
@@ -21,6 +23,9 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6 xl:space-x-8">
+            {isLoggedIn && (
+              <Link to="/dashboard" className="text-sm xl:text-base text-gray-700 hover:text-primary transition-colors">Dashboard</Link>
+            )}
             <Link to="/find-doctors" className="text-sm xl:text-base text-gray-700 hover:text-primary transition-colors">Find Doctors</Link>
             <a href="#" className="text-sm xl:text-base text-gray-700 hover:text-primary transition-colors">Specializations</a>
             <a href="#" className="text-sm xl:text-base text-gray-700 hover:text-primary transition-colors">Health Locker</a>
@@ -29,17 +34,33 @@ const Header = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
-            <Link to="/login">
-              <Button variant="outline" size="sm" className="text-xs sm:text-sm">
-                <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                <span className="hidden sm:inline">Login</span>
-              </Button>
-            </Link>
-            <Link to="/signup">
-              <Button size="sm" className="gradient-primary text-white text-xs sm:text-sm">
-                <span className="hidden lg:inline">Sign Up</span>
-              </Button>
-            </Link>
+            {!isLoggedIn ? (
+              <>
+                <Link to="/login">
+                  <Button variant="outline" size="sm" className="text-xs sm:text-sm">
+                    <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Login</span>
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button size="sm" className="gradient-primary text-white text-xs sm:text-sm">
+                    <span className="hidden lg:inline">Sign Up</span>
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/dashboard">
+                  <Button variant="outline" size="sm" className="text-xs sm:text-sm">
+                    <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Dashboard</span>
+                  </Button>
+                </Link>
+                <Button size="sm" className="gradient-primary text-white text-xs sm:text-sm">
+                  <span className="hidden lg:inline">Logout</span>
+                </Button>
+              </>
+            )}
             <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 cursor-pointer hover:text-primary transition-colors" />
           </div>
 
@@ -60,22 +81,41 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200 bg-white">
             <div className="flex flex-col space-y-3">
+              {isLoggedIn && (
+                <Link to="/dashboard" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">Dashboard</Link>
+              )}
               <Link to="/find-doctors" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">Find Doctors</Link>
               <a href="#" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">Specializations</a>
               <a href="#" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">Health Locker</a>
               <a href="#" className="text-gray-700 hover:text-primary transition-colors py-2 px-2">About</a>
               <div className="pt-3 border-t border-gray-200 space-y-3 px-2">
-                <Link to="/login">
-                  <Button variant="outline" size="sm" className="w-full justify-center">
-                    <User className="w-4 h-4 mr-2" />
-                    Login
-                  </Button>
-                </Link>
-                <Link to="/signup">
-                  <Button size="sm" className="w-full gradient-primary text-white justify-center">
-                    Sign Up
-                  </Button>
-                </Link>
+                {!isLoggedIn ? (
+                  <>
+                    <Link to="/login">
+                      <Button variant="outline" size="sm" className="w-full justify-center">
+                        <User className="w-4 h-4 mr-2" />
+                        Login
+                      </Button>
+                    </Link>
+                    <Link to="/signup">
+                      <Button size="sm" className="w-full gradient-primary text-white justify-center">
+                        Sign Up
+                      </Button>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/dashboard">
+                      <Button variant="outline" size="sm" className="w-full justify-center">
+                        <User className="w-4 h-4 mr-2" />
+                        Dashboard
+                      </Button>
+                    </Link>
+                    <Button size="sm" className="w-full gradient-primary text-white justify-center">
+                      Logout
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </div>
