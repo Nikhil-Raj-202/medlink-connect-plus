@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Leaflet CSS imports */
+@import 'leaflet/dist/leaflet.css';
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -102,4 +105,19 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+}
+
+/* Custom styles for Leaflet map */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.custom-doctor-icon {
+  background: transparent;
+  border: none;
+}
+
+.user-location-icon {
+  background: transparent;
+  border: none;
 }

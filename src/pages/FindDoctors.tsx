@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import DoctorMap from '@/components/DoctorMap';
+import OpenStreetMap from '@/components/OpenStreetMap';
 import { Button } from '@/components/ui/button';
 import { Search, Filter, MapPin, List } from 'lucide-react';
 import AmbulanceService from '@/components/AmbulanceService';
 
-// Sample doctor data with locations in Mumbai - updated to match Doctor interface
+// Sample doctor data with locations in Patna and nearby areas
 const sampleDoctors = [
   {
     id: 1,
@@ -15,10 +15,10 @@ const sampleDoctors = [
     rating: 4.9,
     experience: "15 years",
     location: {
-      lat: 19.0760,
-      lng: 72.8777,
+      lat: 25.5941,
+      lng: 85.1376,
     },
-    address: "Bandra West, Mumbai",
+    address: "Boring Road, Patna",
     phone: "+91 98765 43210",
     availability: "Mon-Fri 9AM-6PM",
     consultationFee: "₹800",
@@ -30,10 +30,10 @@ const sampleDoctors = [
     rating: 4.8,
     experience: "12 years",
     location: {
-      lat: 19.0596,
-      lng: 72.8295,
+      lat: 25.6093,
+      lng: 85.1547,
     },
-    address: "Andheri East, Mumbai",
+    address: "Kankarbagh, Patna",
     phone: "+91 98765 43211",
     availability: "Mon-Sat 10AM-7PM",
     consultationFee: "₹600",
@@ -45,10 +45,10 @@ const sampleDoctors = [
     rating: 4.9,
     experience: "10 years",
     location: {
-      lat: 19.1136,
-      lng: 72.8697,
+      lat: 25.6138,
+      lng: 85.1194,
     },
-    address: "Powai, Mumbai",
+    address: "Patna City, Patna",
     phone: "+91 98765 43212",
     availability: "Tue-Sun 11AM-8PM",
     consultationFee: "₹700",
@@ -60,10 +60,10 @@ const sampleDoctors = [
     rating: 4.7,
     experience: "18 years",
     location: {
-      lat: 18.9220,
-      lng: 72.8347,
+      lat: 25.5788,
+      lng: 85.1658,
     },
-    address: "Colaba, Mumbai",
+    address: "Rajendra Nagar, Patna",
     phone: "+91 98765 43213",
     availability: "Mon-Fri 8AM-5PM",
     consultationFee: "₹900",
@@ -75,10 +75,10 @@ const sampleDoctors = [
     rating: 4.8,
     experience: "14 years",
     location: {
-      lat: 19.0330,
-      lng: 72.8570,
+      lat: 25.6121,
+      lng: 85.1025,
     },
-    address: "Worli, Mumbai",
+    address: "Fraser Road, Patna",
     phone: "+91 98765 43214",
     availability: "Mon-Sat 9AM-6PM",
     consultationFee: "₹750",
@@ -132,7 +132,7 @@ const FindDoctors = () => {
         {/* Header Section */}
         <div className="mb-6 sm:mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Find Doctors Near You</h1>
-          <p className="text-gray-600">Discover verified doctors in your area using our interactive map</p>
+          <p className="text-gray-600">Discover verified doctors in your area using our interactive map powered by OpenStreetMap</p>
         </div>
 
         {/* Search and Filter Section */}
@@ -203,7 +203,7 @@ const FindDoctors = () => {
 
         {/* Content Area */}
         {viewMode === 'map' ? (
-          <DoctorMap doctors={filteredDoctors} onDoctorSelect={handleDoctorSelect} />
+          <OpenStreetMap doctors={filteredDoctors} onDoctorSelect={handleDoctorSelect} />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredDoctors.map((doctor) => (
@@ -235,7 +235,6 @@ const FindDoctors = () => {
       </div>
 
       <AmbulanceService />
-
       <Footer />
     </div>
   );
