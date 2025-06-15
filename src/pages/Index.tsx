@@ -6,12 +6,14 @@ import DoctorSection from '@/components/DoctorSection';
 import HealthLockerSection from '@/components/HealthLockerSection';
 import Footer from '@/components/Footer';
 import AmbulanceService from '@/components/AmbulanceService';
+import QuickNavigationSection from '@/components/QuickNavigationSection';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
       <HeroSection />
+      <QuickNavigationSection />
       <FeaturesSection />
       <DoctorSection />
       <HealthLockerSection />
